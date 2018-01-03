@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<meta charset="utf-8">
-		<link rel ="stylesheet" type="text/css" href="etch.css">
-		<!--Main jquery  -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!--color random -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
-		<!--Roboto google font -->
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	</head>
-		<div class="btn-nav">
-			<button type = "button" class = "btn" id="clearBtn">Clear</button>
-			<button type = "button" class = "btn" id="generateNewGrid">Generate</button>
-			<button type = 'button' class = 'btn' id='Rainbow2'>Rainbow</button>
-			<button type = "button" class = "btn" id="deShade">Default Shading</button>
-		</div>
-			<div id="container"></div>
-	</>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="etch.css">
+	<!--color random -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
+	<!--Roboto google font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+	<div class="btn-nav">
+		<label for="gridSet">Grid Size</label>
+		<input type="text" value="16" name="gridSet">
+		<button type="button" class="btn" id="generateNewGrid">Generate / Clear</button>
+		<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
+		<button type="button" class="btn" id="deShade">Default Shading</button>
+	</div>
+	<div id="grid-container"></div>
 
 	<script src="etch.js"></script>
+</body>
+
 </html>

@@ -1,61 +1,76 @@
-$(document).ready(function() {
+var clearBtn = document.getElementById("clearBtn");
+var generateNewGrid = document.getElementById("generateNewGrid");
+var rainbowColors = document.getElementById("Rainbow2");
+var input = document.querySelector("input");
+var container = document.getElementById("grid-container");
+var defaultShade = document.getElementById("deShade");
 
-// generate 16x16 grid (default)
-// also generate other size grids
-function generateGrid(x) {
- 	for (var rows = 0; rows < x; rows++) {
-    	for (var columns = 0; columns < x; columns++) {
-      	$('#container').append("<div class='cell'></div>");
-      };
-    };
-   $('.cell').width(720/x);
-   $('.cell').height(720/x);
-		paint();
-};
+var rainbowColorsFired = false;
 
-// paint cells with default color
-function paint() {
-	$('.cell').hover(function() {
-		$(this).css('background-color', 'hsl(0, 0%, 90%)');
-});
+generateNewGrid.addEventListener("click", function() {
+   console.log("Generate btn clicked");
+   generateGrid();
+})
+
+rainbowColors.addEventListener("click", function() {
+   rainbowColorsFired = true;
+   colorSquares();
+})
+
+defaultShade.addEventListener("click", function() {
+   rainbowColorsFired = false;
+   colorSquares();
+})
+
+
+function generateGrid() {
+   let gridSize = input.value || 16;
+
+   document.body.style.setProperty('--gridSize', gridSize);
+   restartGrid();
+
+   for (i = gridSize ** 2; i > 0; i--) {
+
+      // console.log("This is a test of the for loop *** " + [i]);
+      const square = document.createElement("div");
+      square.classList.add("grid-item");
+      container.appendChild(square);
+   }
+   colorSquares();
 }
 
-// Clears grid
-$("#clearBtn").on("click", function() {
-	$('.cell').css('background-color', 'white');
-});
+function colorSquares() {
+   let AllSquares = document.querySelectorAll(".grid-item");
 
-// generate a new grid
-$("#generateNewGrid").on("click", function() {
-	var n = prompt("Please enter size of grid (not too high, else page will lag!)");
+   if (rainbowColorsFired) {
+      AllSquares.forEach((square) => {
+         square.addEventListener("mouseover", function(event) {
+            event.target.style.background = randomColor();
+            console.log(event.target.style.background);
+            // #8c0032
+         })
+      })
+   } else if (!rainbowColorsFired) {
+      AllSquares.forEach((square) => {
+         square.addEventListener("mouseover", function(event) {
+            event.target.style.background = "#8c3002";
+            console.log(event.target.style.background);
+         })
+      })
+   }
+   // AllSquares.forEach((square) => {
+   //    square.addEventListener("mouseover", function(event) {
+   //       event.target.style.background = coloredSquares;
+   //       console.log(coloredSquares);
+   //       // #8c0032
+   //    })
+   // })
+}
 
-	if (n === null) {
-		return;
-	}
+function restartGrid() {
+   while (container.firstChild) {
+      container.removeChild(container.firstChild);
+   }
+}
 
-	while (isNaN(n) || n === "" || n <= 0) {
-		var n = prompt("A (positive) number, please");
-
-		if (n === null) {
-		return;
-		}
-	}
-	$('.cell').remove();
-	generateGrid(n);
-});
-
-// random colors
-$('#Rainbow2').on('click', function() {
-	$('.cell').hover(function() {
-		$(this).css('background-color', randomColor());
-	});
-});
-
-// default shade
-$('#deShade').on('click', function() {
-	paint();
-});
-
-
-generateGrid(16);
-});
+generateGrid();
