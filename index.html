@@ -13,11 +13,21 @@
 
 <body>
 	<div class="btn-nav">
-		<label for="gridSet">Grid Size</label>
-		<input type="text" value="16" name="gridSet">
 		<button type="button" class="btn" id="generateNewGrid">Generate / Clear</button>
 		<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
 		<button type="button" class="btn" id="deShade">Default Shading</button>
+		<div id="label">
+			<label for="gridSet">Grid Size</label>
+		</div>
+		<div id="inputGrid">
+			<input type="text" value="16" name="gridSet" maxlength="2">
+		</div>
+	</div>
+	<div>
+		<!-- <label for="gridSet">Grid Size</label>
+		<div>
+			<input type="text" value="16" name="gridSet">
+		</div> -->
 	</div>
 	<div id="grid-container"></div>
 

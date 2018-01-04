@@ -2,25 +2,53 @@
    --gridSize: 16;
 }
 
+html {
+   font-family: Roboto;
+   text-align: center;
+}
+
 body {
    background: #004ba0;
 }
 
+#label {
+   color: rgb(245, 245, 245);
+   padding: 20px 0 3px 0;
+}
+
+#inputGrid {
+   margin-bottom: -15px;
+}
+
+input[type=text] {
+   text-align: center;
+   width: 5%;
+   background-color: #2196f3;
+   color: white;
+   font-size: 17px;
+}
+
+input[type=text]:focus {
+   outline: none;
+}
+
 #grid-container {
+   border: 5px outset rgb(120, 120, 120);
+   border-radius: 5px;
+   background-clip: padding-box;
    display: grid;
    background: white;
    height: 640px;
    width: 640px;
    grid-template-columns: repeat(var(--gridSize), 1fr);
-   padding: 10px;
    margin: auto;
-   box-shadow: 26px 35px 126px -31px rgba(0, 0, 0, 0.62)
+   box-shadow: 25px 25px 90px -5px rgba(0, 0, 0, 0.8);
 }
 
 .grid-item {
    display: inline-block;
    cursor: crosshair;
-   background: gray;
+   background: rgb(150, 150, 150);
    /*border: 1px solid rgba(0, 0, 0, 0.8);*/
 }
 
@@ -30,7 +58,7 @@ body {
 }
 
 .btn {
-   font-family: Roboto;
+   cursor: pointer;
    background-color: #2196f3;
    border: none;
    color: white;
@@ -40,7 +68,16 @@ body {
    display: inline-block;
    font-size: 16px;
    border-radius: 5px;
-   -webkit-box-shadow: 0px 0px 18px rgba(50, 50, 50, 0.75);
-   -moz-box-shadow: 0px 0px 18px rgba(50, 50, 50, 0.75);
-   box-shadow: 0px 0px 18px rgba(50, 50, 50, 0.75);
+   box-shadow: 9px 9px 27px -5px rgba(0, 0, 0, 0.8);
+   transition: all 0.4s;
+}
+
+.btn:hover {
+   color: #0e83cd;
+   background: #fff;
+}
+
+.btn:active {
+   color: rgb(239, 21, 83);
+   background: #fff;
 }

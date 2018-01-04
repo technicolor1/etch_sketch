@@ -58,13 +58,6 @@ function colorSquares() {
          })
       })
    }
-   // AllSquares.forEach((square) => {
-   //    square.addEventListener("mouseover", function(event) {
-   //       event.target.style.background = coloredSquares;
-   //       console.log(coloredSquares);
-   //       // #8c0032
-   //    })
-   // })
 }
 
 function restartGrid() {
