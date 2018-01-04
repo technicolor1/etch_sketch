@@ -53,7 +53,7 @@ function colorSquares() {
    } else if (!rainbowColorsFired) {
       AllSquares.forEach((square) => {
          square.addEventListener("mouseover", function(event) {
-            event.target.style.background = "#8c3002";
+            event.target.style.background = "rgb(115, 115, 115)";
             console.log(event.target.style.background);
          })
       })
