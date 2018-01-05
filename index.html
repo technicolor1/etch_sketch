@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="etch.css">
-	<!--color random -->
+	<!--random color -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
 	<!--Roboto google font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -13,21 +13,17 @@
 
 <body>
 	<div class="btn-nav">
-		<button type="button" class="btn" id="generateNewGrid">Generate / Clear</button>
-		<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
-		<button type="button" class="btn" id="deShade">Default Shading</button>
-		<div id="label">
-			<label for="gridSet">Grid Size</label>
+		<div id="btn-nav-1">
+			<button type="button" class="btn" id="generateNewGrid">Generate / Clear</button>
 		</div>
+		<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
+		<button type="button" class="btn" id="pencil">Pencil</button>
 		<div id="inputGrid">
+			<div>
+				<label for="gridSet">Grid Size</label>
+			</div>
 			<input type="text" value="16" name="gridSet" maxlength="2">
 		</div>
-	</div>
-	<div>
-		<!-- <label for="gridSet">Grid Size</label>
-		<div>
-			<input type="text" value="16" name="gridSet">
-		</div> -->
 	</div>
 	<div id="grid-container"></div>
 

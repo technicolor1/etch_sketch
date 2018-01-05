@@ -8,24 +8,28 @@ html {
 }
 
 body {
-   background: #004ba0;
-}
-
-#label {
-   color: rgb(245, 245, 245);
-   padding: 20px 0 3px 0;
+   background: #003570;
 }
 
 #inputGrid {
-   margin-bottom: -15px;
+   margin: auto;
+   padding: none;
+   width: 75px;
+   margin-top: 20px;
 }
 
 input[type=text] {
    text-align: center;
-   width: 5%;
+   margin-left: -3.1px;
+   width: inherit;
    background-color: #2196f3;
    color: white;
    font-size: 17px;
+}
+
+label {
+   color: rgb(245, 245, 245);
+   padding: 20px 0 3px 0;
 }
 
 input[type=text]:focus {
@@ -33,6 +37,7 @@ input[type=text]:focus {
 }
 
 #grid-container {
+   transition: all 0.5s;
    border: 5px outset rgb(120, 120, 120);
    border-radius: 5px;
    background-clip: padding-box;
@@ -46,15 +51,17 @@ input[type=text]:focus {
 }
 
 .grid-item {
+   transition: all 0.1s;
    display: inline-block;
    cursor: crosshair;
-   background: rgb(150, 150, 150);
+   background: rgb(235, 235, 235);
    /*border: 1px solid rgba(0, 0, 0, 0.8);*/
 }
 
 .btn-nav {
-   text-align: center;
-   padding: 50px;
+   padding: 20px;
+   width: 400px;
+   margin: auto;
 }
 
 .btn {
@@ -80,4 +87,14 @@ input[type=text]:focus {
 .btn:active {
    color: rgb(239, 21, 83);
    background: #fff;
+}
+
+#Rainbow2 {
+   padding-left: 1.55em;
+   width: 110px;
+   text-align: center;
+}
+
+#pencil {
+   width: 110px;
 }

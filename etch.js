@@ -1,37 +1,36 @@
 var clearBtn = document.getElementById("clearBtn");
-var generateNewGrid = document.getElementById("generateNewGrid");
-var rainbowColors = document.getElementById("Rainbow2");
-var input = document.querySelector("input");
-var container = document.getElementById("grid-container");
-var defaultShade = document.getElementById("deShade");
+    generateNewGrid = document.getElementById("generateNewGrid");
+    rainbowColors = document.getElementById("Rainbow2");
+    input = document.querySelector("input");
+    container = document.getElementById("grid-container");
+    pencilMde = document.getElementById("pencil");
 
-var rainbowColorsFired = false;
+var type;
+
 
 generateNewGrid.addEventListener("click", function() {
-   console.log("Generate btn clicked");
    generateGrid();
 })
 
 rainbowColors.addEventListener("click", function() {
-   rainbowColorsFired = true;
-   colorSquares();
+   type = "rainbow";
 })
 
-defaultShade.addEventListener("click", function() {
-   rainbowColorsFired = false;
-   colorSquares();
+pencilMde.addEventListener("click", function () {
+   type = "pencil";
 })
-
 
 function generateGrid() {
    let gridSize = input.value || 16;
+   if (input.value <= 0 || isNaN(input.value)) {
+      input.value = 16;
+      gridSize = 16;
+   }
 
    document.body.style.setProperty('--gridSize', gridSize);
    restartGrid();
 
    for (i = gridSize ** 2; i > 0; i--) {
-
-      // console.log("This is a test of the for loop *** " + [i]);
       const square = document.createElement("div");
       square.classList.add("grid-item");
       container.appendChild(square);
@@ -41,23 +40,21 @@ function generateGrid() {
 
 function colorSquares() {
    let AllSquares = document.querySelectorAll(".grid-item");
+   AllSquares.forEach((square) => {
+      square.addEventListener("mouseover", function() {
+         if (type === 'rainbow') {
+            this.removeAttribute("style");
+            this.style.background = randomColor();
+         } else {
+            pencil(this);
+         }
+      })
+   })
+}
 
-   if (rainbowColorsFired) {
-      AllSquares.forEach((square) => {
-         square.addEventListener("mouseover", function(event) {
-            event.target.style.background = randomColor();
-            console.log(event.target.style.background);
-            // #8c0032
-         })
-      })
-   } else if (!rainbowColorsFired) {
-      AllSquares.forEach((square) => {
-         square.addEventListener("mouseover", function(event) {
-            event.target.style.background = "rgb(115, 115, 115)";
-            console.log(event.target.style.background);
-         })
-      })
-   }
+function pencil(event) {
+   event.style.background = "rgb(0, 0, 0)";
+   event.style.opacity = (parseFloat((event.style.opacity) + 0) + 0.1);
 }
 
 function restartGrid() {
