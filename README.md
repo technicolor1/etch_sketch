@@ -1,6 +1,6 @@
 # etch_sketch
 #
-This is a project assigned from the Odin Project.
+This is a project assigned by the Odin Project. (https://www.theodinproject.com) 
 
 As the title suggests, it is a sketching website where you can paint using only the mouse cursor! Clicking is not required to paint. 
 
