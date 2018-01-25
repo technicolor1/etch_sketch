@@ -1,23 +1,29 @@
-var clearBtn = document.getElementById("clearBtn");
-    generateNewGrid = document.getElementById("generateNewGrid");
-    rainbowColors = document.getElementById("Rainbow2");
-    input = document.querySelector("input");
-    container = document.getElementById("grid-container");
-    pencilMde = document.getElementById("pencil");
+const clearBtn = document.getElementById("clearBtn");
+generateNewGrid = document.getElementById("generateNewGrid");
+rainbowColors = document.getElementById("Rainbow2");
+container = document.getElementById("grid-container");
+pencilMde = document.getElementById("pencil");
+colorPicker = document.getElementById("colorpick");
 
-var type;
+var input = document.querySelector("input[name='gridSet']");
+var type = 'pencil';
+var colorV;
 
 
-generateNewGrid.addEventListener("click", function() {
+generateNewGrid.addEventListener("click", () => {
    generateGrid();
 })
 
-rainbowColors.addEventListener("click", function() {
+rainbowColors.addEventListener("click", () => {
    type = "rainbow";
 })
 
-pencilMde.addEventListener("click", function () {
+pencilMde.addEventListener("click", () => {
    type = "pencil";
+})
+
+colorPicker.addEventListener("click", () => {
+   type = "custom";
 })
 
 function generateGrid() {
@@ -45,11 +51,27 @@ function colorSquares() {
          if (type === 'rainbow') {
             this.removeAttribute("style");
             this.style.background = randomColor();
-         } else {
+         } else if (type === 'pencil') {
             pencil(this);
+         } else if (type === 'custom') {
+            this.removeAttribute("style");
+            this.style.background = customColor(this);
          }
       })
    })
+}
+
+
+function customColor(square) {
+   colorPicker.addEventListener("input", () => {
+      colorV = colorPicker.style.backgroundColor;
+   }, false);
+
+   colorPicker.addEventListener("change", () => {
+      colorV = colorPicker.style.backgroundColor;
+   }, false);
+
+   return colorV;
 }
 
 function pencil(event) {
