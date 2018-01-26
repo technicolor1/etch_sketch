@@ -20,12 +20,23 @@ body {
 }
 
 input[type=text] {
+   border: none;
    text-align: center;
-   margin-left: -3.1px;
    width: inherit;
    background-color: #2196f3;
    color: white;
    font-size: 17px;
+}
+
+input[id=colorpick] {
+   border: none;
+   width: 30%;
+   height: 5%;
+   text-align: center;
+}
+
+input[id=colorpick]:focus {
+   outline: none;
 }
 
 label {
@@ -47,25 +58,28 @@ input[type=text]:focus {
    height: 640px;
    width: 640px;
    grid-template-columns: repeat(var(--gridSize), 1fr);
-   margin: auto;
    box-shadow: 25px 25px 90px -5px rgba(0, 0, 0, 0.8);
 }
 
 .grid-item {
-   transition: all 0.1s;
+   transition: all 0.07s;
    display: inline-block;
    cursor: crosshair;
-   background: rgb(235, 235, 235);
-   /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+   background: #ffffff;
 }
 
 .btn-nav {
    padding: 20px;
-   width: 400px;
-   margin: auto;
+   width: 200px;
+   height: 500px;
+   margin-top: 75px;
+   margin-bottom: 75px;
+   float: left;
 }
 
 .btn {
+   margin-bottom: 10px;
+   width: inherit;
    cursor: pointer;
    background-color: #2196f3;
    border: none;
@@ -73,11 +87,15 @@ input[type=text]:focus {
    padding: 15px 30px;
    text-align: center;
    text-decoration: none;
-   display: inline-block;
+   display: block;
    font-size: 16px;
    border-radius: 5px;
    box-shadow: 9px 9px 27px -5px rgba(0, 0, 0, 0.8);
    transition: all 0.4s;
+}
+
+#eraser {
+   margin-bottom: 40px;
 }
 
 .btn:hover {
@@ -90,12 +108,6 @@ input[type=text]:focus {
    background: #fff;
 }
 
-#Rainbow2 {
-   padding-left: 1.55em;
-   width: 110px;
-   text-align: center;
-}
-
-#pencil {
-   width: 110px;
+.btn:focus {
+   outline: none;
 }

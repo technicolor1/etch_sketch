@@ -1,9 +1,10 @@
 const clearBtn = document.getElementById("clearBtn");
-generateNewGrid = document.getElementById("generateNewGrid");
-rainbowColors = document.getElementById("Rainbow2");
-container = document.getElementById("grid-container");
-pencilMde = document.getElementById("pencil");
-colorPicker = document.getElementById("colorpick");
+      generateNewGrid = document.getElementById("generateNewGrid");
+      rainbowColors = document.getElementById("Rainbow2");
+      container = document.getElementById("grid-container");
+      pencilMde = document.getElementById("pencil");
+      colorPicker = document.getElementById("colorpick");
+      erase = document.getElementById("eraser");
 
 var input = document.querySelector("input[name='gridSet']");
 var type = 'pencil';
@@ -24,6 +25,11 @@ pencilMde.addEventListener("click", () => {
 
 colorPicker.addEventListener("click", () => {
    type = "custom";
+   customColor();
+})
+
+erase.addEventListener("click", () => {
+   type = "eraser";
 })
 
 function generateGrid() {
@@ -48,14 +54,23 @@ function colorSquares() {
    let AllSquares = document.querySelectorAll(".grid-item");
    AllSquares.forEach((square) => {
       square.addEventListener("mouseover", function() {
-         if (type === 'rainbow') {
-            this.removeAttribute("style");
-            this.style.background = randomColor();
-         } else if (type === 'pencil') {
-            pencil(this);
-         } else if (type === 'custom') {
-            this.removeAttribute("style");
-            this.style.background = customColor(this);
+         switch (type) {
+            case 'rainbow':
+               this.removeAttribute("style");
+               this.style.background = randomColor();
+               break;
+            case 'pencil':
+               pencil(this);
+               break;
+            case 'custom':
+               this.removeAttribute("style");
+               this.style.background = customColor(this);
+               break;
+            case 'eraser':
+               this.removeAttribute("style");
+               break;
+            default:
+               break;
          }
       })
    })
