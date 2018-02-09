@@ -4,12 +4,26 @@
 }
 
 html {
+   /* background: #003570; */
+   background: #232526;
+   background: #085078;
+   /* fallback for old browsers */
+   background: -webkit-linear-gradient(to top, #85D8CE, #085078);
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to top, #85D8CE, #085078);
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   height: 50%;
+   width: 100%;
+   background-size: 400% 400%;
+   background-repeat: no-repeat;
+   background-position: center;
    font-family: Roboto;
-   text-align: center;
+   display: table;
 }
 
-body {
-   background: #003570;
+.main-container {
+   margin: auto;
+   width: 1110px;
 }
 
 #inputGrid {
@@ -26,6 +40,7 @@ input[type=text] {
    background-color: #2196f3;
    color: white;
    font-size: 17px;
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.40);
 }
 
 input[id=colorpick] {
@@ -33,6 +48,7 @@ input[id=colorpick] {
    width: 30%;
    height: 5%;
    text-align: center;
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.40);
 }
 
 input[id=colorpick]:focus {
@@ -42,6 +58,7 @@ input[id=colorpick]:focus {
 label {
    color: rgb(245, 245, 245);
    padding: 20px 0 3px 0;
+   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
 }
 
 input[type=text]:focus {
@@ -49,6 +66,7 @@ input[type=text]:focus {
 }
 
 #grid-container {
+   margin-top: 70px;
    transition: all 0.5s;
    border: 5px outset rgb(120, 120, 120);
    border-radius: 5px;
@@ -75,6 +93,7 @@ input[type=text]:focus {
    margin-top: 75px;
    margin-bottom: 75px;
    float: left;
+   text-align: center;
 }
 
 .btn {

@@ -14,23 +14,25 @@
 </head>
 
 <body>
-	<div class="btn-nav">
-		<button type="button" class="btn" id="generateNewGrid">Generate / Clear</button>
-		<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
-		<button type="button" class="btn" id="pencil">Pencil</button>
-		<button type="button" class="btn" id="eraser">Eraser</button>
-		<label for="colorpick">Pick a Color</label>
-		<input class="jscolor {width:400, height:150, position:'right',
-    borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}" id="colorpick" name="colorpick" value="#000000">
-		<div id="inputGrid">
-			<div>
-				<label for="gridSet">Grid Size</label>
+	<div class="main-container">
+		<div class="btn-nav">
+			<button type="button" class="btn" id="generateNewGrid">Generate</button>
+			<button type="button" class="btn" id="clearBtn">Clear</button>
+			<button type='button' class='btn' id='Rainbow2'>Rainbow</button>
+			<button type="button" class="btn" id="pencil">Pencil</button>
+			<button type="button" class="btn" id="eraser">Eraser</button>
+			<label for="colorpick">Pick a Color</label>
+			<input class="jscolor {width:400, height:150, position:'right',
+	    borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}" id="colorpick" name="colorpick" value="#000000">
+			<div id="inputGrid">
+				<div>
+					<label for="gridSet">Grid Size</label>
+				</div>
+				<input type="text" value="16" name="gridSet" maxlength="2">
 			</div>
-			<input type="text" value="16" name="gridSet" maxlength="2">
 		</div>
+		<div id="grid-container"></div>
 	</div>
-	<div id="grid-container"></div>
-
 	<script src="etch.js"></script>
 </body>
 

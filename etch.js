@@ -6,33 +6,50 @@ const clearBtn = document.getElementById("clearBtn");
       colorPicker = document.getElementById("colorpick");
       erase = document.getElementById("eraser");
 
-var input = document.querySelector("input[name='gridSet']");
-var type = 'pencil';
-var colorV;
+let input = document.querySelector("input[name='gridSet']");
+let type = 'pencil';
+let colorV;
+let isDrawing = false;
 
 
 generateNewGrid.addEventListener("click", () => {
+   if (isDrawing == false) {
+      isDrawing = true;
+   }
    generateGrid();
 })
 
 rainbowColors.addEventListener("click", () => {
+   isDrawing = true;
    type = "rainbow";
 })
 
 pencilMde.addEventListener("click", () => {
+   isDrawing = true;
    type = "pencil";
 })
 
 colorPicker.addEventListener("click", () => {
+   isDrawing = true;
    type = "custom";
    customColor();
 })
 
 erase.addEventListener("click", () => {
+   isDrawing = true;
    type = "eraser";
 })
 
+clearBtn.addEventListener("click", () => {
+   clearGrid();
+})
+
+container.addEventListener("mousedown", () => {
+   isDrawing = !isDrawing;
+})
+
 function generateGrid() {
+   restartGrid();
    let gridSize = input.value || 16;
    if (input.value <= 0 || isNaN(input.value)) {
       input.value = 16;
@@ -40,7 +57,6 @@ function generateGrid() {
    }
 
    document.body.style.setProperty('--gridSize', gridSize);
-   restartGrid();
 
    for (i = gridSize ** 2; i > 0; i--) {
       const square = document.createElement("div");
@@ -53,24 +69,28 @@ function generateGrid() {
 function colorSquares() {
    let AllSquares = document.querySelectorAll(".grid-item");
    AllSquares.forEach((square) => {
+
+      // FIXME: when painting enabled, it does not immediately act if mouse is already on a cell
       square.addEventListener("mouseover", function() {
-         switch (type) {
-            case 'rainbow':
-               this.removeAttribute("style");
-               this.style.background = randomColor();
-               break;
-            case 'pencil':
-               pencil(this);
-               break;
-            case 'custom':
-               this.removeAttribute("style");
-               this.style.background = customColor(this);
-               break;
-            case 'eraser':
-               this.removeAttribute("style");
-               break;
-            default:
-               break;
+         if (isDrawing == true) {
+            switch (type) {
+               case 'rainbow':
+                  this.removeAttribute("style");
+                  this.style.background = randomColor();
+                  break;
+               case 'pencil':
+                  pencil(this);
+                  break;
+               case 'custom':
+                  this.removeAttribute("style");
+                  this.style.background = customColor(this);
+                  break;
+               case 'eraser':
+                  this.removeAttribute("style");
+                  break;
+               default:
+                  break;
+            }
          }
       })
    })
@@ -89,15 +109,25 @@ function customColor(square) {
    return colorV;
 }
 
-function pencil(event) {
-   event.style.background = "rgb(0, 0, 0)";
-   event.style.opacity = (parseFloat((event.style.opacity) + 0) + 0.1);
+function pencil(square) {
+   square.style.background = "rgb(0, 0, 0)";
+   square.style.opacity = (parseFloat((square.style.opacity) + 0) + 0.1);
 }
 
 function restartGrid() {
    while (container.firstChild) {
       container.removeChild(container.firstChild);
    }
+}
+
+function clearGrid() {
+   let AllSquares = document.querySelectorAll(".grid-item");
+   AllSquares.forEach(square => {
+      square.style.background = "";
+      if (square.style.opacity) {
+         square.style.opacity = "";
+      }
+   })
 }
 
 generateGrid();
