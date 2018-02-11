@@ -13,7 +13,7 @@ Features
 - <s>Generate combined to Generate / Clear. Functionality remains the same.</s> Generate and clear separated to improve performance
 - Textbox for grid size.
 - CSS-grid for easel.
-- 90% of look complete complete
+- 90% of look 
 
 Issues
 ----
